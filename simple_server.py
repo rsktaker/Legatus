@@ -1,7 +1,7 @@
 # rsk-machine
 
 # Description: Personal API endpoint to process write and read requests to message bins - perfect for INDIRECT communication between servers
-# Created By: Ruchir & Rochan Kavulli
+# Created By: Ruchir Kavulli (https://github.com/rsktaker) & Rochan Kavulli (https://github.com/RochanK)
 
 
 
