@@ -1,7 +1,7 @@
 # rsk-machine
 
 # Description: Personal API endpoint to process write and read requests to message bins - perfect for INDIRECT communication between servers
-# Created By: Ruchir Kavulli
+# Created By: Ruchir & Rochan Kavulli
 
 
 
@@ -16,13 +16,14 @@ dotenv.load_dotenv()
 admin_password = os.getenv('admin_password')
 admin_name = os.getenv('admin_name')
 
+mess_bins = [{'id':0, 'name': 'commander-bin', 'messages': [] }]
+id_counter = 0
+
 
 class SimpleHandler(BaseHTTPRequestHandler):
-    #XXX: Are these variables good now? Do they work as I expected??
-    global mess_bins, id_counter
-    mess_bins = [{'id':0, 'name': 'commander-bin', 'messages': [] }]
-    id_counter = 0
+    
     def do_POST(self):
+        global mess_bins, id_counter
         
         content_length = int(self.headers['Content-Length'])
         post_data = self.rfile.read(content_length)
@@ -54,7 +55,7 @@ class SimpleHandler(BaseHTTPRequestHandler):
             # Data sent is message. Header contains bin number.
 
             if (bin is None) or not isinstance(bin, int):
-                rb_data = b'Use an existing bin number (*_*).\n'
+                rb_data = b'Use an existing bin number (*_*)\n'
             elif bin == 0:
                 rb_data = f'WARNING: You are not allowed here (*_*)\nThis bin is property of {admin_name}.\n'.encode()
             else:
@@ -110,8 +111,43 @@ class SimpleHandler(BaseHTTPRequestHandler):
                 rb_data = 'You are not the commander (*_*)\n'.encode()
 
         else:
-            #XXX: RETURN THE SAME DOCUMENTATION AS BEFORE!!
-            pass
+            rb_data = """
+            Welcome to the Message Bin API (*_*)
+
+            Public Endpoints:
+            1. POST /create-messbin - Create a new message bin
+                Headers:
+                - None
+                Body:
+                - The name of the message bin (string)
+            
+            2. POST /messbin - Write a message to a bin
+                Headers:
+                - bin: The ID of the bin (integer)
+                Body:
+                - The message to store (string)
+            
+            3. GET /messbin - Read messages from a bin
+                Headers:
+                - bin: The ID of the bin (integer)
+            
+
+            Commander Endpoints:
+            4. POST /clear-all - Clear all message bins
+                Headers:
+                - pass: Admin password (string)
+            
+            5. POST /commander-bin - Write to commander bin
+                Headers:
+                - pass: Admin password (string)
+                Body:
+                - The message to store (string)
+            
+            6. GET /commander-bin - Read messages from the commander bin
+                Headers:
+                - pass: Admin password (string)
+
+            """.encode()
                 
 
         self.send_response(200)
@@ -120,6 +156,7 @@ class SimpleHandler(BaseHTTPRequestHandler):
         self.wfile.write(rb_data)
 
     def do_GET(self):
+        global mess_bins, id_counter
         password = self.headers.get('pass')
         # If bin is not a valid integer, set it to None
         bin = self.headers.get('bin')
@@ -151,7 +188,7 @@ class SimpleHandler(BaseHTTPRequestHandler):
                         if chatLogs == '':
                             rb_data = f'Bin logs empty (*_*)\n'.encode()
                         else:
-                            rb_data = f'Reading {bin_dict['name']} (*_*)\n-------------------------------------------------\n\nBin {bin} logs (Max 10):\n{chatLogs}\n-------------------------------------------------\n\n'.encode()
+                            rb_data = f'Reading {bin_dict['name']} (*_*)\n-------------------------------------------------\n\nBin {bin} logs (Max 10):\n\n{chatLogs}\n-------------------------------------------------\n\n'.encode()
                         break
                 else:
                     # If no matching bin is found
@@ -212,7 +249,7 @@ class SimpleHandler(BaseHTTPRequestHandler):
                 - pass: Admin password (string)
 
             """.encode()
-            pass
+            
         
 
         self.send_response(200)
