@@ -261,8 +261,8 @@ class SimpleHandler(BaseHTTPRequestHandler):
 
             Templates:
 
-            (Write "Hello World" to bin 1)
-            curl -X POST -H 'bin: 1' -d "Hello world!" $LINK/messbin
+            (Write to bin 1)
+            curl -X POST -H 'bin: 1' -d "$chat" $LINK/messbin
 
             (Read bin 1)
             curl -H 'bin: 1' $LINK/messbin
