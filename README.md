@@ -11,6 +11,7 @@ At my university, the Intro CS class utilizes a code editor called Vocareum for 
 
 
 Exploring the Vocareum terminal, I found there were no restrictions on curl commands. I ran a simple api call to ChatGPT and confirmed that students could access AI generated code during exams from the editor's terminal itself:
+
 <img width="700" alt="rsk2" src="https://github.com/user-attachments/assets/5258e50c-136d-4e08-b39a-c1bed74ad18c">
 
 
