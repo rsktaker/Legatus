@@ -1,4 +1,4 @@
-# rsk-machine
+# Legatus
 
 Personal API endpoint to process write and read requests to message bins - perfect for indirect communication between computers.
 
@@ -17,7 +17,7 @@ Exploring the Vocareum terminal, I found there were no restrictions on curl comm
 
 But that's quite the command to memorize (imagine writing _that_ on your hand or the inside of your shirt).
 
-I wanted something your average student could use easily, so I had the idea to set up my computer as an messaging endpoint to enable communication between students during exams. Here is the basic functionality:
+I wanted something your average student could easily use, so I had the idea to set up my computer as an messaging endpoint to enable communication between students during exams. Here is the basic functionality:
 
 - Students can create a message bin and write messages to it with POST requests:
 <img width="834" alt="rsk3" src="https://github.com/user-attachments/assets/f78557ae-fd13-478b-8a69-4ff489872d94">
@@ -53,7 +53,7 @@ Portforwarding to port 8080. The 'Forwarding' link is essentially the url you us
 ```bash
 ngrok http 8080
 ```
-Use `curl $LINK` to check the list of all commands + copy/paste templates. Where LINK is ^ forwarding link.
+Run `curl $LINK` to check the list of all commands + copy/paste templates. Where LINK is ^ forwarding link.
 
 ## The Exotic Option
 
