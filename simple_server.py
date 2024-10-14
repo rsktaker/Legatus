@@ -70,10 +70,7 @@ class SimpleHandler(BaseHTTPRequestHandler):
                             except IndexError:
                                 break
                         
-                        if chatLogs.strip() == message:
-                            rb_data = f'Message stored in message bin {bin} (*_*)\n\nBin logs empty.\n'.encode()
-                        else:
-                            rb_data = f'Message stored in message bin {bin} (*_*)\n-------------------------------------------------\n\nBin {bin} logs (Max 10):\n{chatLogs}-------------------------------------------------\n\n'.encode()
+                        rb_data = f'Message stored in message bin {bin} (*_*)\n-------------------------------------------------\n\nBin {bin} logs (Max 10):\n{chatLogs}-------------------------------------------------\n\n'.encode()
                         break
                 else:
                     rb_data = b'Use an existing bin number (*_*).\n'
@@ -102,10 +99,7 @@ class SimpleHandler(BaseHTTPRequestHandler):
                     except IndexError:
                         break 
                 
-                if chatLogs.strip() == message:
-                    rb_data = f'Welcome {admin_name} (*_*)\n\nMessage stored in commander bin.\nCommander bin logs empty.\n'.encode()
-                else:
-                    rb_data = f'Message stored in commander bin (*_*)\n-------------------------------------------------\n\nCommander bin logs (Max 10):\n{chatLogs}-------------------------------------------------\n\n'.encode()
+                rb_data = f'Message stored in commander bin (*_*)\n-------------------------------------------------\n\nCommander bin logs (Max 10):\n{chatLogs}-------------------------------------------------\n\n'.encode()
             else:
                 rb_data = 'You are not the commander (*_*)\n'.encode()
 
