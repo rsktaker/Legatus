@@ -267,6 +267,9 @@ class SimpleHandler(BaseHTTPRequestHandler):
             (Read bin 1)
             curl -H 'bin: 1' $LINK/messbin
 
+            (List active bins)
+            curl $LINK/list-bins
+
             """.encode()
             
         
