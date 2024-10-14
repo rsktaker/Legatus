@@ -12,7 +12,6 @@ import dotenv
 
 dotenv.load_dotenv()
 
-#XXX: DO I need to do global for these two?
 admin_password = os.getenv('admin_password')
 admin_name = os.getenv('admin_name')
 
@@ -193,6 +192,7 @@ class SimpleHandler(BaseHTTPRequestHandler):
                 else:
                     # If no matching bin is found
                     rb_data = b'Use an existing bin number (*_*).\n'
+
         elif self.path == '/commander-bin':
             # Read commander-bin
             # Header contains password
@@ -211,14 +211,21 @@ class SimpleHandler(BaseHTTPRequestHandler):
                     rb_data = f'Reading commander bin (*_*)\n-------------------------------------------------\n\nCommander bin logs (Max 10):\n{chatLogs}\n-------------------------------------------------\n\n'.encode()
             else:
                 rb_data = 'You are not the commander (*_*)\n'.encode()
+
+        elif self.path == '/list-bins':
+            # Return all active bins w/ id & name
+
+            binInfo = ''
+            for bin in mess_bins:
+                binInfo += f'Bin {bin['id']} [{bin['name']}] -- Logs: {len(bin['messages'])}\n\n'
+            rb_data = f'Active Bins (*_*)\n-------------------------------------------------\n\n{binInfo}\n-------------------------------------------------\n\n'.encode()
+
         else:
             rb_data = """
             Welcome to the Message Bin API (*_*)
 
             Public Endpoints:
             1. POST /create-messbin - Create a new message bin
-                Headers:
-                - None
                 Body:
                 - The name of the message bin (string)
             
@@ -231,6 +238,9 @@ class SimpleHandler(BaseHTTPRequestHandler):
             3. GET /messbin - Read messages from a bin
                 Headers:
                 - bin: The ID of the bin (integer)
+
+            4. GET /list-bins - List all active bins
+
             
 
             Commander Endpoints:
@@ -247,6 +257,15 @@ class SimpleHandler(BaseHTTPRequestHandler):
             6. GET /commander-bin - Read messages from the commander bin
                 Headers:
                 - pass: Admin password (string)
+
+
+            Templates:
+
+            (Write "Hello World" to bin 1)
+            curl -X POST -H 'bin: 1' -d "Hello world!" $LINK
+
+            (Read bin 1)
+            curl -H 'bin: 1' $LINK
 
             """.encode()
             
