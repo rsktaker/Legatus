@@ -213,7 +213,7 @@ class SimpleHandler(BaseHTTPRequestHandler):
                 rb_data = 'You are not the commander (*_*)\n'.encode()
 
         elif self.path == '/list-bins':
-            # Return all active bins w/ id & name
+            # List all active bins w/ id & name
 
             binInfo = ''
             for bin in mess_bins:
