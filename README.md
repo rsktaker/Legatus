@@ -1,6 +1,6 @@
 # Legatus
 
-Personal API endpoint to process write and read requests to message bins - perfect for indirect communication between computers.
+Personal API endpoint to process write and read requests to message bins - perfect for (indirect) communication between computers.
 
 
 ## Origins
@@ -59,7 +59,7 @@ Run `curl $LINK` to check the list of all commands + copy/paste templates. Where
 
 Wherever this server that's running my code is, nothing on it has been updated since 2016 so it matches the criteria for many known vulnerabilities.
 
-For example, CVE-2019-0211 is a local root exploit that could potentially allow students to find and copy the solution code for an assignment (it must be stored somewhere...)
+For example, CVE-2019-0211 is a local privilege escalation that could potentially allow students to find and copy the solution code for an assignment (it must be stored somewhere...)
 
 
 ## License
