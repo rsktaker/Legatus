@@ -31,10 +31,9 @@ I wanted something your average student could easily use, so I had the idea to s
 
 
 ## Notice
-This system was developed to **demonstrate** the potential for cheating and was never exploited for those purposes. All code was tested on the HW 1 assignment (which was already submitted) and **never** on an exam. My professor & Vocareum themselves were notified of this before its public release. 
+This system was developed to **demonstrate** the potential for cheating and was never exploited for those purposes. All code was tested on the HW 1 assignment (which was already submitted) and **never** on an exam. 
 
-Cheating during exams is only one potential use. Really, it is a personal API endpoint for indirect communication between servers -- there could be many other applications!
-
+Additionally, my professor & Vocareum were notified of this flaw before its public release and, to mitigate the issue, Vocareum is disabling network access from code editor terminals + updating their systems.
 
 
 ## Admin Implementation
