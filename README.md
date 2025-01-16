@@ -54,12 +54,6 @@ ngrok http 8080
 ```
 Run `curl $LINK` to check the list of all commands + copy/paste templates. Where LINK is ^ forwarding link.
 
-## The Exotic Option
-
-Wherever this server that's running my code is, nothing on it has been updated since 2016 so it matches the criteria for many known vulnerabilities.
-
-For example, CVE-2019-0211 is a local privilege escalation that could potentially allow students to find and copy the solution code for an assignment (it must be stored somewhere...)
-
 
 ## License
 
